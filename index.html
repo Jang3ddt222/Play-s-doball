@@ -29,17 +29,17 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             border-bottom: 2px solid #334155;
             padding-bottom: 15px;
         }
         header img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
         }
         header h1 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin: 0;
         }
         .player-container {
@@ -49,7 +49,7 @@
             background-color: #000;
             border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
         }
         video, iframe {
@@ -64,17 +64,17 @@
             justify-content: center;
             height: 100%;
             color: var(--text-secondary);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         .group-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
             color: var(--accent-color);
         }
         .stations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 15px;
         }
         .station-card {
             background-color: var(--card-bg);
@@ -87,23 +87,29 @@
             flex-direction: column;
         }
         .station-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
             border-color: var(--accent-color);
         }
+        /* ปรับสัดส่วนรูปภาพให้เต็มกรอบสวยงาม */
         .station-img-container {
             width: 100%;
             height: 140px;
             background-color: #000;
             position: relative;
+            overflow: hidden;
         }
         .station-img-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* ปรับให้รูปขยายเต็มกรอบพอดี ไม่เบี้ยว */
+            transition: transform 0.3s ease;
+        }
+        .station-card:hover .station-img-container img {
+            transform: scale(1.05); /* เอฟเฟกต์ซูมเบาๆ เวลาเอาเมาส์ชี้ */
         }
         .station-info {
-            padding: 15px;
+            padding: 12px 15px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -111,11 +117,11 @@
         }
         .station-name {
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+            font-size: 1rem;
+            margin-bottom: 4px;
         }
         .station-badge {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
         }
     </style>
@@ -138,68 +144,29 @@
 </div>
 
 <script>
-    // ข้อมูล JSON ของคุณ (รวมลิงก์ Man Utd vs Aston Villa แล้ว)
     const playlistData = {
       "name": "Premier League Live",
       "author": "แถม Premier League",
       "image": "https://dooball66-hd.com/favicon.ico",
       "groups": [
         {
-          "name": "08/11/2026 |  Premier League",
+          "name": "08/11/2026 | Premier League",
           "image": "https://image.api-b-cdn.com/football/leagues/39.png",
           "stations": [
             {
-              "name": "Brighton vs Brentford",
+              "name": "Manchester United vs Aston Villa (ลิงก์ 1)",
               "info": "⚽ Premier League",
-              "image": "https://static.ppvservices.st/assets/thumb/32fd8098ffa752c65ed9b01109223e5c-thumbnail.jpg",
-              "url": "https://admin2.formaturamaxi.com.br/plus.m3u8",
-              "embed": "true",
-              "isWeb": true
-            },
-            {
-              "name": "Brighton vs Brentford",
-              "info": "⚽ Premier League",
-              "image": "https://static.ppvservices.st/assets/thumb/32fd8098ffa752c65ed9b01109223e5c-thumbnail.jpg",
-              "url": "https://sportsbite.org/247/skysportsplus",
-              "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
-              "isWeb": true
-            },
-            {
-              "name": "Crystal Palace vs Liverpool",
-              "info": "⚽ Premier League",
-              "image": "https://static.ppvservices.st/assets/thumb/3ae52ce24a78332a298538690a722132-thumbnail.jpg", 
+              "image": "https://static.ppvservices.st/assets/thumb/12b00704a89100d988fd37ef80360c79-thumbnail.jpg",
               "url": "https://admin2.formaturamaxi.com.br/main.m3u8",
-              "embed": "true"
-            },
-            {
-              "name": "Ipswich Town vs AFC Bournemouth",
-              "info": "⚽ Premier League",
-              "image": "https://static.ppvservices.st/assets/thumb/30b825b0473a19430fe688e5a886f54b-thumbnail.jpg",
-              "url": "https://admin2.formaturamaxi.com.br/ipswich.m3u8",
               "embed": "true",
-              "isWeb": true
-            },
-            {
-              "name": "Sunderland vs Chelsea",
-              "info": "⚽ Premier League",
-              "image": "https://static.ppvservices.st/assets/thumb/64daee3fbb4f243a948cf455cb1a65bb-thumbnail.jpg",
-              "url": "https://taifood-blog.asia/embed/pl/2026-11-08/sun-che",
-              "embed": "true",
+              "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
               "isWeb": true
             }, 
             {
-              "name": "Sunderland vs Chelsea",
-              "info": "⚽ Premier League",
-              "image": "https://static.ppvservices.st/assets/thumb/64daee3fbb4f243a948cf455cb1a65bb-thumbnail.jpg",
-              "url": "https://admin2.formaturamaxi.com.br/chelsea.m3u8",
-              "embed": "true",
-              "isWeb": true
-            },
-            {
-              "name": "Manchester United vs Aston Villa",
+              "name": "Manchester United vs Aston Villa (ลิงก์ 2)",
               "info": "⚽ Premier League",
               "image": "https://static.ppvservices.st/assets/thumb/12b00704a89100d988fd37ef80360c79-thumbnail.jpg",
-              "url": "https://admin2.formaturamaxi.com.br/usa.m3u8",
+              "url": "https://taifood-blog.asia/embed/pl/2026-11-08/mun-avl",
               "embed": "true",
               "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
               "isWeb": true
@@ -209,13 +176,11 @@
       ]
     };
 
-    // โหลดข้อมูล Header
     document.getElementById('app-name').innerText = playlistData.name;
     document.getElementById('app-logo').src = playlistData.image;
 
     const contentArea = document.getElementById('content-area');
 
-    // สร้างเนื้อหาตามโครงสร้าง JSON
     playlistData.groups.forEach(group => {
         const groupDiv = document.createElement('div');
         
@@ -254,20 +219,13 @@
         contentArea.appendChild(groupDiv);
     });
 
-    // ฟังก์ชันสำหรับเล่นวิดีโอ
     function playStream(station) {
         const box = document.getElementById('player-box');
         box.innerHTML = '';
 
         const url = station.url;
 
-        if (url.includes('http') && (station.embed === "true" || url.includes('embed') || url.includes('sportsbite'))) {
-            const iframe = document.createElement('iframe');
-            iframe.src = url;
-            iframe.setAttribute('allowfullscreen', 'true');
-            iframe.setAttribute('allow', 'autoplay; encrypted-media');
-            box.appendChild(iframe);
-        } else if (url.endsWith('.m3u8') || url.includes('.m3u8')) {
+        if (url.endsWith('.m3u8') || url.includes('.m3u8')) {
             const video = document.createElement('video');
             video.controls = true;
             video.autoplay = true;
@@ -286,6 +244,12 @@
                     video.play();
                 });
             }
+        } else if (url.includes('http') && (station.embed === "true" || url.includes('embed') || url.includes('sportsbite'))) {
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.setAttribute('allowfullscreen', 'true');
+            iframe.setAttribute('allow', 'autoplay; encrypted-media');
+            box.appendChild(iframe);
         } else {
             const video = document.createElement('video');
             video.src = url;
@@ -298,4 +262,3 @@
 
 </body>
 </html>
-
